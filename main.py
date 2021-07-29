@@ -6,9 +6,9 @@ def execute_and_return(cmd):
     """
     Execute the external command and get its exitcode, stdout and stderr.
     """
-    args = shlex.split(cmd)
-    proc = Popen(args, stdout=PIPE, stderr=PIPE)
-    out, err = proc.communicate()
+    args = shlex.split(cmd)  #take test.py and split it
+    proc = Popen(args, stdout=PIPE, stderr=PIPE) #made output and error pipestream
+    out, err = proc.communicate()   #fetch them using communicate method
     return out, err
 
 def make_request(error):
@@ -34,10 +34,10 @@ def get_urls(json_dict):
 
 if __name__ == "__main__":
     out, err = execute_and_return("python test.py")
-    error_message = err.decode("utf-8").strip().split("\r\n")[-1]
+    error_message = err.decode("utf-8").strip().split("\r\n")[-1] #convert binary object to string and remove unneccessary spaces
     print(error_message)
-    if error_message:
-        filter_out = error_message.split(":")
+    if error_message:         #loop for error occurance
+        filter_out = error_message.split(":")    
         print(filter_out)
         print(filter_out[0])
         json1 = make_request(filter_out[0])
