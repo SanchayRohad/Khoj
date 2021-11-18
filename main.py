@@ -4,7 +4,7 @@ from subprocess import Popen, PIPE
 
 def execute_and_return(cmd):
     """
-    Execute the external command and get its exitcode, stdout and stderr.
+    Execute the external command and get its exitcode, stdout and stderr..
     """
     args = shlex.split(cmd)  #take test.py and split it
     proc = Popen(args, stdout=PIPE, stderr=PIPE) #made output and error pipestream
