@@ -1,2 +1,2 @@
-var=2+'abcd'
+var=23+'abcd'
 print(var)
